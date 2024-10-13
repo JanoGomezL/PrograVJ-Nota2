@@ -84,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         transform.position += (Vector3)(m_Velocity * Time.deltaTime);
+        
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Attack1();
+        }
     }
 
     private void FixedUpdate()
