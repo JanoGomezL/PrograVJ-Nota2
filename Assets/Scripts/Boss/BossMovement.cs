@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum EnemyState
+public enum BossState
 {
     Idle, Chasing, Attacking, Shuriken,Died
 }
 
-public class EnemyMovement : MonoBehaviour
+public class BossMovement : MonoBehaviour
 
 {
     [SerializeField]
@@ -17,15 +17,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private GameObject m_ShurikenPrefab;
     [SerializeField]
-    private GameObject m_CameraStage1;
-    [SerializeField]
-    private GameObject m_CameraGamePlay1;
-    [SerializeField]
-    private GameObject m_CameraStage2;
-    [SerializeField]
-    private GameObject m_CameraGamePlay2;
-    [SerializeField]
     private Transform m_ShurikenSpawnPoint;
+    [SerializeField]
+    private GameObject m_WinPanel;
+    [SerializeField]
+    private GameObject m_PlayerObj;
     [SerializeField]
     private float m_ChaseRange = 3f;
     [SerializeField]
@@ -137,7 +133,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnIdle()
     {
-        m_SpriteAnimator.SetTrigger("Stop");
+        m_SpriteAnimator.SetTrigger("StopWalkBoss");
     }
 
     private void OnChase()
@@ -168,7 +164,7 @@ public class EnemyMovement : MonoBehaviour
         // Perseguir al jugador
         Vector3 dir = (m_Player.position - transform.position).normalized;
         transform.position += m_Speed * Time.deltaTime * dir;
-        m_SpriteAnimator.SetTrigger("StartWalk");
+        m_SpriteAnimator.SetTrigger("StartWalkBoss");
     }
 
     private void OnAttack()
@@ -184,12 +180,12 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator MeleeAttack()
     {
         m_AttackExecuted = true;
-        m_SpriteAnimator.SetTrigger("StartMelee");
+        m_SpriteAnimator.SetTrigger("StartSlashBoss");
         yield return new WaitForSeconds(0.3f);
         m_HealthBarPlayer.TakeMeleeDamage();
         yield return new WaitForSeconds(0.2f);
-        m_SpriteAnimator.SetTrigger("StopMelee");
-        yield return new WaitForSeconds(2.5f);
+        m_SpriteAnimator.SetTrigger("StopSlashBoss");
+        yield return new WaitForSeconds(3.5f);
         m_AttackExecuted = false;
         
     }
@@ -208,14 +204,14 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator ShootAttack()
     {
         m_ShootExecuted = true;
-        m_SpriteAnimator.SetTrigger("StartShuriken");
+        m_SpriteAnimator.SetTrigger("StartShootBoss");
         yield return new WaitForSeconds(0.3f);
         GameObject shuriken = Instantiate(m_ShurikenPrefab, m_ShurikenSpawnPoint.position, Quaternion.identity);
 
         float direction = m_SpriteAnimator.GetComponent<SpriteRenderer>().flipX ? 1f : -1f;
         shuriken.GetComponent<ShurikenMovement>().SetDirection(new Vector2(direction, 0));
         yield return new WaitForSeconds(0.2f);
-        m_SpriteAnimator.SetTrigger("StopShuriken");
+        m_SpriteAnimator.SetTrigger("StopShootBoss");
         yield return new WaitForSeconds(1.5f);
         m_ShootExecuted = false;
         
@@ -238,13 +234,13 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator DiedAnim()
     {
         m_Died = true;
-        m_SpriteAnimator.SetTrigger("StartDied");
+        m_SpriteAnimator.SetTrigger("StartDiedBoss");
         yield return new WaitForSeconds(0.5f);
+        m_WinPanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
-        m_CameraStage2.SetActive(true);
-        Destroy(m_CameraStage1);
-        m_CameraGamePlay2.SetActive(true);
-        Destroy(m_CameraGamePlay1);
+        Destroy(m_PlayerObj);
+        
       
     }
 
@@ -252,23 +248,24 @@ public class EnemyMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         float raycastOffset = 0.5f; 
-        Vector2 leftRaycastOrigin = new Vector2(m_RaycastGenerator.position.x- raycastOffset , m_RaycastGenerator.position.y );
+        Vector2 leftRaycastOrigin = new Vector2(m_RaycastGenerator.position.x- raycastOffset , m_RaycastGenerator.position.y);
         Vector2 rightRaycastOrigin = new Vector2(m_RaycastGenerator.position.x+ raycastOffset , m_RaycastGenerator.position.y );
         Gizmos.color = Color.green;
         Gizmos.DrawRay(leftRaycastOrigin, Vector2.left * m_RaycastDistance);
         Gizmos.DrawRay(rightRaycastOrigin, Vector2.right * m_RaycastDistance);
     }
 
+
     public void Talk()
     {
         if (!m_IsTalking)
         {
-            m_SpriteAnimator.SetTrigger("Talk");
+            m_SpriteAnimator.SetTrigger("StartTalkBoss");
             m_IsTalking = true;
         }
         else
         {
-            m_SpriteAnimator.SetTrigger("StopTalk");
+            m_SpriteAnimator.SetTrigger("StopTalkBoss");
             m_IsTalking = false;
         }
     }
