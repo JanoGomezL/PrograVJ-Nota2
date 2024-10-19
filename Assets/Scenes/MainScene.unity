@@ -769,7 +769,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18662262, y: 1.7309155}
+  m_Offset: {x: 0.17199326, y: 1.6284802}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -780,7 +780,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7354736, y: 1.1474857}
+  m_Size: {x: 1.976799, y: 1.3523564}
   m_EdgeRadius: 0
 --- !u!114 &150745915
 MonoBehaviour:
@@ -3234,7 +3234,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.089271545, y: 2.0545204}
+  m_Offset: {x: 0.068042755, y: 1.6755732}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3245,7 +3245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9614525, y: 0.5002761}
+  m_Size: {x: 1.7256966, y: 1.2581704}
   m_EdgeRadius: 0
 --- !u!114 &755012542
 MonoBehaviour:
@@ -3990,7 +3990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Vas a caer \_Miguel\_Angel!"
+  m_text: "\xA1Vas a caer \_Miguelangelo!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4352,7 +4352,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07875633, y: 2.0545204}
+  m_Offset: {x: 0.08460808, y: 1.7425966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4363,7 +4363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9902077, y: 0.5002761}
+  m_Size: {x: 1.5712318, y: 1.1241236}
   m_EdgeRadius: 0
 --- !u!114 &1215906559
 MonoBehaviour:
@@ -5058,7 +5058,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23945093, y: 1.7800426}
+  m_Offset: {x: 0.23945093, y: 2.0171862}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5069,7 +5069,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1665745, y: 1.0492315}
+  m_Size: {x: 1.1665745, y: 0.57494473}
   m_EdgeRadius: 0
 --- !u!1 &1492787712
 GameObject:
@@ -6507,9 +6507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Y asi fue como Miguel Angel vencio al Destructor
-
-    FIN'
+  m_Text: "\xA1\xA1\xA1Una vez mas las Tortuninjas lograron derrotar al Destructor!!!\n\nFIN"
 --- !u!222 &1914714604
 CanvasRenderer:
   m_ObjectHideFlags: 0
